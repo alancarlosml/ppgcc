@@ -133,7 +133,6 @@ def generate_model():
     model.add(Activation('softmax'))
     '''
 
-    # compile has to be done impurely
     compile_model(model)
 
     with open('./models/convnet_model.json', 'w') as outfile:
