@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image
 
 def get_folders(data_base):
+  
   data_folders = []
   for name in os.listdir(data_base):
     if(os.path.isdir(data_base + name)):
@@ -35,6 +36,7 @@ def sample(iterable, n, mapa):
   return reservoir
 
 def config_base(folders, data_base, train_perc, test_perc, img_type):
+  
   train_data = []
   test_data = []
   valid_data = []
@@ -69,6 +71,7 @@ def config_base(folders, data_base, train_perc, test_perc, img_type):
   return train_data, test_data, valid_data
 
 def resize_centered(img):
+  
   w = img.size[0]; h = img.size[1]; c = len(img.split())
   maior = w
   if(h > maior): 
@@ -110,6 +113,7 @@ def load_data(base_set, image_size=(32 ,32), channels=3):
   
  
 def load(data_root='C:\\Mestrado\\Data\\', img_rows=32, img_cols=32, channels=3, img_type="jpg"):
+  
   # Getting folders in data dabe
   classes_folders = get_folders(data_root)
 
