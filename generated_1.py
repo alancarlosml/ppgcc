@@ -145,8 +145,6 @@ def train(model, x_train, y_train, x_test, y_test, x_valid, y_valid):
     
     print('Training model\n\n')
 
-    # train each iteration individually to back up current state
-    # safety measure against potential crashes
     epoch_count = 0
     while epoch_count < 5:
         epoch_count += 1
