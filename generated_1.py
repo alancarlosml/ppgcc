@@ -154,7 +154,7 @@ def train(model, x_train, y_train, x_test, y_test, x_valid, y_valid):
         model.fit(x_train, y_train, 
                     batch_size=batch_size,
                     epochs=epochs, 
-                    validation_data=(x_test, y_test))
+                    validation_data=(x_valid, y_valid))
         print('Epoch {} done, saving model to file\n\n'.format(epoch_count))
         model.save_weights('./models/convnet_weights.h5')
 
@@ -162,19 +162,19 @@ def train(model, x_train, y_train, x_test, y_test, x_valid, y_valid):
 
 def get_score(model, x_test, y_test, x_valid, y_valid):
     
-    score = model.evaluate(x_valid, y_valid, verbose=0)
+    score = model.evaluate(x_test, y_test, verbose=0)
 
     print('Test loss:', score[0])
     print('Test accuracy:', score[1])
     
 def get_confusion_matrix(model, x_test, y_test, x_valid, y_valid):
     
-    Y_pred = model.predict(x_valid, verbose=2)
+    Y_pred = model.predict(x_test, verbose=2)
     y_pred = np.argmax(Y_pred, axis=1)
 
     for ix in range(num_classes):
-        print(ix, confusion_matrix(np.argmax(y_valid,axis=1),y_pred)[ix].sum())
-    cm = confusion_matrix(np.argmax(y_valid,axis=1),y_pred)
+        print(ix, confusion_matrix(np.argmax(y_test,axis=1),y_pred)[ix].sum())
+    cm = confusion_matrix(np.argmax(y_test,axis=1),y_pred)
     print(cm)
 
 def main():
