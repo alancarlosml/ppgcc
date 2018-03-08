@@ -85,6 +85,7 @@ def generate_model():
 
         return model
 
+    '''
     print('Loading new model\n\n')
 
     model = Sequential()
@@ -100,7 +101,7 @@ def generate_model():
     model.add(Dense(50, activation= 'relu' ))
     model.add(Dense(num_classes, activation= 'softmax' ))
 
-    '''
+    
     # Conv1 32 32 (3) => 30 30 (32)
     model.add(Conv2D(32, (3, 3), input_shape=input_shape))
     model.add(BatchNormalization())
@@ -135,9 +136,11 @@ def generate_model():
 
     compile_model(model)
 
+    '''
     with open('./models/convnet_model.json', 'w') as outfile:
         json.dump(model.to_json(), outfile)
         outfile.close()
+    '''
 
     return model
     
@@ -154,7 +157,7 @@ def train(model, x_train, y_train, x_test, y_test, x_valid, y_valid):
                     epochs=epochs, 
                     validation_data=(x_valid, y_valid))
         print('Epoch {} done, saving model to file\n\n'.format(epoch_count))
-        model.save_weights('./models/convnet_weights.h5')
+        #model.save_weights('./models/convnet_weights.h5')
 
     return model
 

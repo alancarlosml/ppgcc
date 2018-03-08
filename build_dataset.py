@@ -118,7 +118,7 @@ def load(data_root='C:\\Mestrado\\Data\\', img_rows=32, img_cols=32, channels=3,
   classes_folders = get_folders(data_root)
 
   # Separating base into train and test sets
-  train_set, test_set, valid_set = config_base(classes_folders, data_root, train_perc=0.6, test_perc=0.3, img_type=img_type)
+  train_set, test_set, valid_set = config_base(classes_folders, data_root, train_perc=0.5, test_perc=0.3, img_type=img_type)
 
   # Loading data
   print("Loading data...")
